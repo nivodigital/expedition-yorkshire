@@ -2,12 +2,16 @@
  * Cloudflare Pages Function — enquiry form handler.
  * Route: POST /api/enquiry  (Content-Type: application/json)
  *
- * Validates the submission, drops honeypot spam, then forwards the enquiry
- * to the Go High Level inbound webhook. The webhook URL is read from the
- * GHL_WEBHOOK_URL environment variable (never hardcoded).
+ * Validates the submission, drops honeypot spam, verifies reCAPTCHA v3
+ * (fail-closed), then delivers the enquiry by email to Andrew via the Resend
+ * HTTP API. The API key is read from the RESEND_API_KEY environment
+ * variable/secret — server-side only, never hardcoded, never sent to the
+ * browser.
  *
- * Responses: { ok: true } on success, { ok: false, error } on failure,
- * with an appropriate HTTP status so the front-end can show success or error.
+ * Responses: { ok: true } only once Resend has accepted the message for
+ * delivery; { ok: false, error } on any failure, with an appropriate HTTP
+ * status so the front-end shows success (redirect to /enquiry-received/) or an
+ * inline error. Nothing is sent to Go High Level.
  */
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -48,7 +52,7 @@ export async function onRequestPost({ request, env }) {
 
   // 4. Verify the reCAPTCHA v3 token with Google before doing anything else.
   //    Fail closed: a missing secret, a missing token, a failed check, or an
-  //    unreachable Google all reject the submission and never reach GHL.
+  //    unreachable Google all reject the submission and never send an email.
   const secret = env && env.RECAPTCHA_SECRET_KEY;
   if (!secret) {
     console.error("RECAPTCHA_SECRET_KEY is not set");
@@ -88,39 +92,74 @@ export async function onRequestPost({ request, env }) {
     return json({ ok: false, error: "Your submission couldn't be verified. Please try again." }, 403);
   }
 
-  // 5. Ensure the destination is configured
-  const webhook = env && env.GHL_WEBHOOK_URL;
-  if (!webhook) {
-    console.error("GHL_WEBHOOK_URL is not set");
+  // 5. Ensure the email service is configured (server-side secret only)
+  const resendKey = env && env.RESEND_API_KEY;
+  if (!resendKey) {
+    console.error("RESEND_API_KEY is not set");
     return json({ ok: false, error: "Sorry, the enquiry form is temporarily unavailable." }, 500);
   }
 
-  // 6. Build the GHL payload (split the name; keep the full name too)
-  const parts = name.split(/\s+/).filter(Boolean);
-  const payload = {
-    first_name: parts[0] || name,
-    last_name: parts.slice(1).join(" "),
-    name: name,
-    email: email,
-    dates: clean(data.dates, MAX.dates),
-    group: clean(data.group, MAX.group),
-    tour: clean(data.tour, MAX.tour),
-    message: clean(data.message, MAX.message)
-  };
+  // 6. Gather the enquiry fields (tour/page context preserved)
+  const dates = clean(data.dates, MAX.dates);
+  const group = clean(data.group, MAX.group);
+  const tour = clean(data.tour, MAX.tour);
+  const message = clean(data.message, MAX.message);
 
-  // 7. Forward to Go High Level
+  // 7. Build the notification email. Reply-To is the customer's own address so
+  //    Andrew can reply straight back to them from his inbox.
+  const esc = (s) =>
+    String(s == null ? "" : s)
+      .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  const rows = [
+    ["Name", name],
+    ["Email", email],
+    ["Preferred dates", dates],
+    ["Group size", group],
+    ["Tour / interest", tour],
+    ["Message", message]
+  ];
+  const subject = "Website enquiry — " + name + (tour ? " — " + tour : "");
+  const textBody =
+    "New enquiry from the Expedition Yorkshire website\n\n" +
+    rows.map(function (r) { return r[0] + ": " + (r[1] || "—"); }).join("\n") + "\n";
+  const htmlBody =
+    '<div style="font-family:Arial,Helvetica,sans-serif;font-size:15px;color:#1F2A24;line-height:1.6">' +
+    '<h2 style="font-family:Georgia,serif;font-weight:normal;color:#324B3E;margin:0 0 16px">New website enquiry</h2>' +
+    '<table cellpadding="0" cellspacing="0" style="border-collapse:collapse">' +
+    rows.map(function (r) {
+      return '<tr>' +
+        '<td style="padding:6px 16px 6px 0;vertical-align:top;color:#6B7F70;white-space:nowrap">' + esc(r[0]) + '</td>' +
+        '<td style="padding:6px 0;vertical-align:top;white-space:pre-wrap">' + esc(r[1] || "—") + '</td>' +
+        '</tr>';
+    }).join("") +
+    '</table></div>';
+
+  // 8. Deliver via Resend. Only report success once Resend accepts the message.
+  let sendRes;
   try {
-    const res = await fetch(webhook, {
+    sendRes = await fetch("https://api.resend.com/emails", {
       method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify(payload)
+      headers: {
+        "authorization": "Bearer " + resendKey,
+        "content-type": "application/json"
+      },
+      body: JSON.stringify({
+        from: "Expedition Yorkshire Website <enquiries@expeditionyorkshire.com>",
+        to: ["andrew@expeditionyorkshire.com"],
+        reply_to: email,
+        subject: subject,
+        text: textBody,
+        html: htmlBody
+      })
     });
-    if (!res.ok) {
-      console.error("GHL webhook responded with status", res.status);
-      return json({ ok: false, error: "We couldn't send your enquiry. Please try again in a moment." }, 502);
-    }
   } catch (err) {
-    console.error("GHL webhook request failed", err);
+    console.error("Resend request failed", err);
+    return json({ ok: false, error: "We couldn't send your enquiry. Please try again in a moment." }, 502);
+  }
+  if (!sendRes.ok) {
+    let detail = "";
+    try { detail = await sendRes.text(); } catch (_e) {}
+    console.error("Resend responded with status", sendRes.status, detail);
     return json({ ok: false, error: "We couldn't send your enquiry. Please try again in a moment." }, 502);
   }
 
