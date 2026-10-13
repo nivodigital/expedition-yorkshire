@@ -26,107 +26,168 @@
   <link rel="stylesheet" href="/assets/css/styles.css?v=8">
   <script type="application/ld+json">
 {
-  "@context": "https://schema.org",
-  "@graph": [
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "TravelAgency",
+   "@id": "https://www.expeditionyorkshire.com/#org",
+   "name": "Expedition Yorkshire",
+   "url": "https://www.expeditionyorkshire.com/",
+   "telephone": "+441904235928",
+   "email": "andrew@expeditionyorkshire.com",
+   "image": "https://www.expeditionyorkshire.com/assets/images/og-default.png",
+   "logo": "https://www.expeditionyorkshire.com/assets/images/ey-logo.png",
+   "priceRange": "££££",
+   "areaServed": "Yorkshire and Northern England",
+   "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "York",
+    "addressRegion": "North Yorkshire",
+    "addressCountry": "GB"
+   },
+   "sameAs": []
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
     {
-      "@type": "TravelAgency",
-      "@id": "https://www.expeditionyorkshire.com/#org",
-      "name": "Expedition Yorkshire",
-      "url": "https://www.expeditionyorkshire.com/",
-      "telephone": "+441904235928",
-      "email": "andrew@expeditionyorkshire.com",
-      "image": "https://www.expeditionyorkshire.com/assets/images/og-default.png",
-      "logo": "https://www.expeditionyorkshire.com/assets/images/ey-logo.png",
-      "priceRange": "££££",
-      "areaServed": "Yorkshire and Northern England",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "York",
-        "addressRegion": "North Yorkshire",
-        "addressCountry": "GB"
-      },
-      "sameAs": []
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Home",
+     "item": "https://www.expeditionyorkshire.com/"
     },
     {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://www.expeditionyorkshire.com/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Chauffeur & Transfers",
-          "item": "https://www.expeditionyorkshire.com/chauffeur-service/"
-        }
-      ]
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Is the price per person or per group?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Per group — one price covers up to seven guests, including VAT; transfer tours from £1,545."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Do you do airport and station transfers?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes — private transfers to and from airports, stations and cruise ports, quoted on request."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How many passengers and how much luggage?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Up to 7 guests in the Mercedes-Benz V-Class, with room for full luggage."
-          }
-        }
-      ]
-    },
-    {
-      "@type": "Product",
-      "name": "Private Chauffeur & Transfer Service",
-      "description": "Private, door-to-door chauffeur and scenic transfer service for up to 7 guests in a Mercedes-Benz V-Class.",
-      "brand": {
-        "@type": "Brand",
-        "name": "Expedition Yorkshire"
-      },
-      "image": "https://www.expeditionyorkshire.com/assets/images/og-default.png",
-      "url": "https://www.expeditionyorkshire.com/chauffeur-service/",
-      "offers": {
-        "@type": "Offer",
-        "price": "1545",
-        "priceCurrency": "GBP",
-        "availability": "https://schema.org/InStock",
-        "url": "https://www.expeditionyorkshire.com/chauffeur-service/",
-        "priceSpecification": {
-          "@type": "PriceSpecification",
-          "price": "1545",
-          "priceCurrency": "GBP",
-          "valueAddedTaxIncluded": true,
-          "description": "Per group, up to 7 guests, including VAT"
-        }
-      },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "5",
-        "reviewCount": "180",
-        "bestRating": "5"
-      }
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Chauffeur & Transfers",
+     "item": "https://www.expeditionyorkshire.com/chauffeur-service/"
     }
-  ]
+   ]
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "How much does a private chauffeur in Yorkshire cost?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Expedition Yorkshire's chauffeur service is priced per group, not per person. Scenic transfer tours start from £1,545 including VAT for up to 7 guests in a Mercedes-Benz V-Class, about £221 each for a group of seven. Express airport, station and cruise port transfers are quoted on request."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "What is a scenic transfer tour?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "A scenic transfer tour is a private journey between two places with sightseeing stops along the way, so a travel day becomes a touring day. Unlike a taxi or the train, you see the places in between: we collect you from your door, your luggage stays in the vehicle, and your local driver-guide stops where you choose. York to Edinburgh, for example, is a full day, door to door."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Can we add sightseeing to a transfer?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Absolutely. Any journey can include stops and a guide. Tell us what you would love to see, and we will design the route around it, or we will suggest places that suit the journey. If you would rather go straight there, we can keep it a straight run."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "What will we see between York and Edinburgh?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The York to Edinburgh scenic transfer follows the East Coast north, with stops at Hadrian's Wall, Alnwick Castle and Bamburgh Castle, a visit to Holy Island, and views over the North Sea before you cross the England–Scotland border. It runs door to door, from your York hotel to your Edinburgh hotel, at your pace."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "How many passengers and how much luggage?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Up to 7 guests travel together in one Mercedes-Benz V-Class. With seven on board there is room for 7 large suitcases and at least 7 soft cabin bags. Groups of up to 14 can travel in two vehicles; get in touch to find out more."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Do you do airport and station transfers?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Yes. We run private airport transfers to and from London Heathrow, London Gatwick, London Stansted, London City, Luton, East Midlands, Manchester, Liverpool John Lennon, Leeds Bradford, Newcastle, Teesside, Edinburgh and Glasgow airports. We also run station transfers to and from York, Leeds, Whitby, Manchester, Liverpool Lime Street, London King's Cross and St Pancras, London Euston, Edinburgh Waverley and Glasgow Central. Contact us for prices."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Do you do cruise port transfers?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Yes. We run private door-to-port cruise transfers to and from Southampton, Dover, London, Liverpool and Newcastle (Port of Tyne). An arrival day can also become a transfer tour, with sightseeing on the way to your hotel while your luggage stays in the vehicle. Prices are quoted on request."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Where do you cover?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Yorkshire and the North as standard, including York, Leeds, Sheffield, Halifax, Harrogate, Skipton, Broughton Hall, Scarborough, Whitby, the Dales and the Moors. We also cover Manchester, Liverpool, Durham and Hexham, and the Lake District, including Windermere, Ambleside, Grasmere and Keswick. City-to-city journeys run to Edinburgh and London, and we can arrange custom transfers into mainland Europe, such as France, Italy and Germany. Ask us about anywhere else."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "How do I book, and do I pay a deposit?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Send an enquiry, call 01904 235928 or email andrew@expeditionyorkshire.com. There is no deposit to enquire, and we reply personally, usually the same day."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Do you run transfers in winter?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Yes. All our express transfers and transfer tours run all year round, in spring, summer, autumn and winter."
+     }
+    }
+   ]
+  },
+  {
+   "@type": "Service",
+   "name": "Private Chauffeur & Transfer Service",
+   "serviceType": "Chauffeur service",
+   "provider": {
+    "@id": "https://www.expeditionyorkshire.com/#org"
+   },
+   "areaServed": "Yorkshire and Northern England",
+   "url": "https://www.expeditionyorkshire.com/chauffeur-service/",
+   "image": "https://www.expeditionyorkshire.com/assets/images/og-default.png",
+   "offers": [
+    {
+     "@type": "Offer",
+     "name": "York to Edinburgh scenic transfer",
+     "priceSpecification": {
+      "@type": "PriceSpecification",
+      "price": "1545",
+      "priceCurrency": "GBP",
+      "valueAddedTaxIncluded": true,
+      "description": "Per group, up to 7 guests, including VAT"
+     }
+    },
+    {
+     "@type": "Offer",
+     "name": "York to London via Cambridge",
+     "priceSpecification": {
+      "@type": "PriceSpecification",
+      "price": "1915",
+      "priceCurrency": "GBP",
+      "valueAddedTaxIncluded": true,
+      "description": "Per group, up to 7 guests, including VAT"
+     }
+    }
+   ]
+  }
+ ]
 }
-  </script>
+</script>
+  <style>.faq-a a{color:var(--cta);text-decoration:underline;text-underline-offset:2px}.faq-a a:hover{color:var(--cta-hover)}</style>
 </head>
 <body data-page-tour="">
   <a class="skip-link" href="#main">Skip to content</a><main id="main"><div class="hero on-dark">
@@ -321,20 +382,35 @@
       </div></div></section><section class="section bg-paper"><div class="wrap">
       <div class="section-head center"><p class="eyebrow">Good to know</p><h2 class="h2">Chauffeur &amp; transfers — your questions</h2></div>
       <div class="faq"><div class="faq-item open">
-          <button class="faq-q" aria-expanded="true"><span>Is the price per person or per group?</span><span class="pm">–</span></button>
-          <div class="faq-a">Per group. One price covers your whole party of up to seven, including VAT — for transfer tours, from £1,545.</div>
+          <button class="faq-q" aria-expanded="true"><span>How much does a private chauffeur in Yorkshire cost?</span><span class="pm">–</span></button>
+          <div class="faq-a">Expedition Yorkshire's chauffeur service is priced per group, not per person. Scenic transfer tours start from £1,545 including VAT for up to 7 guests in a Mercedes-Benz V-Class, about £221 each for a group of seven. Express airport, station and cruise port transfers are quoted on request.</div>
         </div><div class="faq-item">
-          <button class="faq-q" aria-expanded="false"><span>Do you do airport and station transfers?</span><span class="pm">+</span></button>
-          <div class="faq-a">Yes — comfortable private transfers to and from airports, stations and cruise ports, quoted on request.</div>
+          <button class="faq-q" aria-expanded="false"><span>What is a scenic transfer tour?</span><span class="pm">+</span></button>
+          <div class="faq-a">A scenic transfer tour is a private journey between two places with sightseeing stops along the way, so a travel day becomes a touring day. Unlike a taxi or the train, you see the places in between: we collect you from your door, your luggage stays in the vehicle, and your local driver-guide stops where you choose. York to Edinburgh, for example, is a full day, door to door.</div>
         </div><div class="faq-item">
           <button class="faq-q" aria-expanded="false"><span>Can we add sightseeing to a transfer?</span><span class="pm">+</span></button>
-          <div class="faq-a">Absolutely. A scenic transfer tour builds stops and a guide into the journey; or we can keep it a straight run.</div>
+          <div class="faq-a">Absolutely. Any journey can include stops and a guide. Tell us what you would love to see, and we will <a href="/design-your-tour/">design the route</a> around it, or we will suggest places that suit the journey. If you would rather go straight there, we can keep it a straight run.</div>
+        </div><div class="faq-item">
+          <button class="faq-q" aria-expanded="false"><span>What will we see between York and Edinburgh?</span><span class="pm">+</span></button>
+          <div class="faq-a">The <a href="/transfers/york-to-edinburgh/">York to Edinburgh scenic transfer</a> follows the East Coast north, with stops at Hadrian's Wall, Alnwick Castle and Bamburgh Castle, a visit to Holy Island, and views over the North Sea before you cross the England–Scotland border. It runs door to door, from your York hotel to your Edinburgh hotel, at your pace.</div>
         </div><div class="faq-item">
           <button class="faq-q" aria-expanded="false"><span>How many passengers and how much luggage?</span><span class="pm">+</span></button>
-          <div class="faq-a">Up to 7 guests in the Mercedes-Benz V-Class, with room for full luggage.</div>
+          <div class="faq-a">Up to 7 guests travel together in one <a href="/the-vehicle/">Mercedes-Benz V-Class</a>. With seven on board there is room for 7 large suitcases and at least 7 soft cabin bags. Groups of up to 14 can travel in two vehicles; get in touch to find out more.</div>
+        </div><div class="faq-item">
+          <button class="faq-q" aria-expanded="false"><span>Do you do airport and station transfers?</span><span class="pm">+</span></button>
+          <div class="faq-a">Yes. We run private <a href="/chauffeur-service/airport-transfers/">airport transfers</a> to and from London Heathrow, London Gatwick, London Stansted, London City, Luton, East Midlands, Manchester, Liverpool John Lennon, Leeds Bradford, Newcastle, Teesside, Edinburgh and Glasgow airports. We also run station transfers to and from York, Leeds, Whitby, Manchester, Liverpool Lime Street, London King's Cross and St Pancras, London Euston, Edinburgh Waverley and Glasgow Central. <a href="/contact/">Contact us</a> for prices.</div>
+        </div><div class="faq-item">
+          <button class="faq-q" aria-expanded="false"><span>Do you do cruise port transfers?</span><span class="pm">+</span></button>
+          <div class="faq-a">Yes. We run private door-to-port <a href="/chauffeur-service/cruise-port-transfers/">cruise transfers</a> to and from Southampton, Dover, London, Liverpool and Newcastle (Port of Tyne). An arrival day can also become a transfer tour, with sightseeing on the way to your hotel while your luggage stays in the vehicle. Prices are quoted on request.</div>
         </div><div class="faq-item">
           <button class="faq-q" aria-expanded="false"><span>Where do you cover?</span><span class="pm">+</span></button>
-          <div class="faq-a">Yorkshire and the North as standard, plus city-to-city journeys such as Edinburgh and London. Ask us about anywhere else.</div>
+          <div class="faq-a">Yorkshire and the North as standard, including York, Leeds, Sheffield, Halifax, Harrogate, Skipton, Broughton Hall, Scarborough, Whitby, the Dales and the Moors. We also cover Manchester, Liverpool, Durham and Hexham, and the Lake District, including Windermere, Ambleside, Grasmere and Keswick. City-to-city journeys run to Edinburgh and London, and we can arrange custom transfers into mainland Europe, such as France, Italy and Germany. Ask us about anywhere else.</div>
+        </div><div class="faq-item">
+          <button class="faq-q" aria-expanded="false"><span>How do I book, and do I pay a deposit?</span><span class="pm">+</span></button>
+          <div class="faq-a">Send an enquiry, call 01904 235928 or email andrew@expeditionyorkshire.com. There is no deposit to enquire, and we reply personally, usually the same day.</div>
+        </div><div class="faq-item">
+          <button class="faq-q" aria-expanded="false"><span>Do you run transfers in winter?</span><span class="pm">+</span></button>
+          <div class="faq-a">Yes. All our express transfers and transfer tours run all year round, in spring, summer, autumn and winter.</div>
         </div></div>
     </div></section><section class="section bg-stone"><div class="wrap">
       <div class="cta-split">
@@ -580,8 +656,8 @@
   <div class="booking-dock" id="booking-dock">
     <div class="bd-inner">
       <div class="bd-info">
-        <span class="bd-price">£985 <span>/ group · inc VAT</span></span>
-        <span class="bd-sub">Private full-day tour · up to 7 guests</span>
+        <span class="bd-price">From £1,545 <span>/ group · inc VAT</span></span>
+        <span class="bd-sub">Private transfer tours · up to 7 guests</span>
       </div>
       <div class="bd-actions">
         <span class="bd-reassure"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.5 2.5L16 9"/></svg>No deposit · a prompt personal reply</span>
