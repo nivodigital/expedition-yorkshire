@@ -218,12 +218,14 @@
 .mde-tour-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px 20px;margin-top:18px;padding-top:18px;border-top:1px solid var(--border-hairline)}
 .mde-price .amt{font-family:var(--font-display);font-size:1.55rem;color:var(--ink);line-height:1}
 .mde-price .per{display:block;font-size:.8rem;color:var(--ink-muted);margin-top:4px}
-.mde-tour-note{margin:14px 0 0;font-size:.92rem;color:var(--ink-muted);line-height:1.55}
-.mde-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:12px 40px}
-.mde-list li{position:relative;padding-left:24px;color:var(--ey-forest);line-height:1.55}
-.mde-list li::before{content:"";position:absolute;left:0;top:9px;width:7px;height:7px;border-radius:50%;background:var(--accent)}
+.mde-tour-note{margin:16px 0 0;padding-top:14px;border-top:1px solid var(--border-hairline);font-size:.92rem;color:var(--ink-muted);line-height:1.55}
+.mde-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,1fr);gap:14px 16px}
+.mde-list li{position:relative;display:flex;align-items:center;min-height:60px;padding:15px 18px 15px 52px;background:var(--surface-raised);border:1px solid var(--border-hairline);border-radius:12px;box-shadow:var(--shadow-soft);color:var(--ink);line-height:1.5}
+.mde-list li::before{content:"";position:absolute;left:16px;top:50%;transform:translateY(-50%);width:24px;height:24px;border-radius:50%;background:var(--accent) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7'/%3E%3C/svg%3E") center/13px no-repeat}
 .mde-list a{color:var(--cta);text-decoration:underline;text-underline-offset:2px}
 @media(max-width:760px){.mde-tour{grid-template-columns:1fr}.mde-tour-media{min-height:200px;position:relative}.mde-tour-media img{position:static;height:200px}.mde-tour-body{padding:0 22px 24px}.mde-list{grid-template-columns:1fr}}
+  .aeo p{font-size:clamp(1.12rem,2vw,1.4rem)}
+@media(min-width:861px){.aeo-split{align-items:stretch}.aeo-side-figure{aspect-ratio:auto;height:100%;min-height:260px}.aeo-side-figure img{height:100%;width:100%;object-fit:cover}}
   </style>
 </head>
 <body data-page-tour="Multi-Day Expeditions">
